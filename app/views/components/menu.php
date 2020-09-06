@@ -11,18 +11,18 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav navbar-nav ml-auto">
-        <li class="nav-item active">
-            <a class="nav-link" href="#">Home</a>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo URLROOT ?>/income/index">Income</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="<?php echo URLROOT ?>/expense/index">Expense</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Portfolio</a>
+            <a class="nav-link" href="<?php echo URLROOT ?>/category/index">Category</a>
         </li>
-        <li class="nav-item">
+        <!-- <li class="nav-item">
             <a class="nav-link" href="#">Contact</a>
-        </li>
+        </li> -->
         </ul>
     </div>
     </div>

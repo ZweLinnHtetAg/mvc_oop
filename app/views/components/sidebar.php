@@ -1,8 +1,8 @@
 <nav id="sidebar">
         <div class="p-4 pt-5">
-        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url(images/logo.jpg);"></a>
+        <a href="#" class="img logo rounded-circle mb-5" style="background-image: url('<?php echo URLROOT; ?>/public/images/logo.jpg');"></a>
     <ul class="list-unstyled components mb-5">
-        <li class="active">
+        <!-- <li class="active">
         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
         <ul class="collapse list-unstyled" id="homeSubmenu">
         <li>
@@ -15,8 +15,35 @@
             <a href="#">Home 3</a>
         </li>
         </ul>
+        </li> -->
+        <li>
+        <a href="#incomeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Income</a>
+        <ul class="collapse list-unstyled" id="incomeSubmenu">
+        <li>
+            <a href="<?php echo URLROOT ?>/income/index">income</a>
+        </li>
+        </li>
+        </ul>
         </li>
         <li>
+        <a href="#expenseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Expense</a>
+        <ul class="collapse list-unstyled" id="expenseSubmenu">
+        <li>
+            <a href="<?php echo URLROOT; ?>/expense/index">index</a>
+        </li>
+        </li>
+        </ul>
+        </li>
+        <li>
+        <a href="#categorySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Category</a>
+        <ul class="collapse list-unstyled" id="categorySubmenu">
+        <li>
+            <a href="<?php echo URLROOT ?>/category/index">Index</a>
+        </li>
+        
+        </ul>
+        </li>
+        <!-- <li>
             <a href="#">About</a>
         </li>
         <li>
@@ -38,13 +65,11 @@
         </li>
         <li>
         <a href="#">Contact</a>
-        </li>
+        </li> -->
     </ul>
 
     <div class="footer">
-        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+       
     </div>
 
     </div>
