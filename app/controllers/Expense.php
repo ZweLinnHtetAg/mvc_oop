@@ -5,13 +5,15 @@ class Expense extends Controller{
 
     function __construct()
     {
-        $db = new Database;
+        $this->db = new Database;
     }
 
     public function index()
     {
+        $expenses = $this->db->readAll('expenses');
         $data = [
-            "title" => "This is expense page"
+            "title" => "Expense",
+            "expenses"=> $expenses
         ];
         $this->view('expenses/index',$data);
     }

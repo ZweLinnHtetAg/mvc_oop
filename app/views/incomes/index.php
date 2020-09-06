@@ -17,6 +17,36 @@
         ?>
 
         </h2>
+
+        <table class="table table-light">
+        <thead>
+          <th>ID</th>
+          <th>Category ID</th>
+          <th>Amount</th>
+          <th>User Id</th>
+          <th>Date</th>
+        </thead>
+        <tbody>
+        <?php
+
+          foreach($data['incomes'] as $income)
+          {
+            ?>
+
+            <tr>
+              <td><?php echo $income['id'] ?></td>
+              <td><?php echo $income['category_id'] ?></td>
+              <td><?php echo $income['amount'] ?></td>
+              <td><?php echo $income['user_id'] ?></td>
+              <td><?php echo $income['date'] ?></td>
+            </tr>
+
+            <?php
+          }
+
+        ?>
+        </tbody>
+        </table>
        
       </div>
 		</div>

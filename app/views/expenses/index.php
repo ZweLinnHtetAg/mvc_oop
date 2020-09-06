@@ -17,6 +17,34 @@
         ?>
 
         </h2>
+
+        <table class="table table-light">
+        <thead>
+          <th>ID</th>
+          <th>Category ID</th>
+          <th>Amount</th>
+          <th>Qty</th>
+          <th>User ID</th>
+          <th>Date</th>
+        </thead>
+        <tbody>
+          <?php 
+          foreach($data['expenses'] as $expense)
+          { ?>
+            <tr>
+              <td><?php echo $expense['id'] ?></td>
+              <td><?php echo $expense['category_id'] ?></td>
+              <td><?php echo $expense['amount'] ?></td>
+              <td><?php echo $expense['qty'] ?></td>
+              <td><?php echo $expense['user_id'] ?></td>
+              <td><?php echo $expense['date'] ?></td>
+            </tr>
+          <?php
+          }
+
+          ?>
+        </tbody>
+        </table>
        
       </div>
 		</div>

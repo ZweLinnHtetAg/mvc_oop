@@ -6,13 +6,18 @@ class Category extends Controller{
     private $db;
     function __construct()
     {
-        $db = new Database;
+        $this->db = new Database;
     }
 
     public function index(){
+
+        $categories = $this->db->readAll('categories');        
         $data = [
-            'title' => 'This is category page'
+            'title' => 'Category',
+            'categories' => $categories
         ];
+
+
         $this->view('categories/index',$data);
     }
 

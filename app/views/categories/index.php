@@ -17,6 +17,30 @@
         ?>
 
         </h2>
+
+        <table class="table table-light">
+        <thead>
+              <tr>
+                  <th>Id</th>
+                  <th>Name </th>
+                  <th>Description </th>
+              </tr>
+          </thead>
+          <tbody>
+          <?php
+          foreach($data['categories'] as $category)
+          {
+          ?>
+          <tr>
+            <td><?php echo $category['id'] ?></td>
+            <td><?php echo $category['name'] ?></td>
+            <td><?php echo $category['description'] ?></td>
+          </tr>
+          <?php
+          }
+          ?>
+          </tbody>
+        </table>
        
       </div>
 		</div>

@@ -11,9 +11,10 @@
 
 	};
 	fullHeight();
-
+	$('#table_id').DataTable();
 	$('#sidebarCollapse').on('click', function () {
       $('#sidebar').toggleClass('active');
   });
 
 })(jQuery);
+

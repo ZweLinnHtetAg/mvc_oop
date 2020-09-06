@@ -5,12 +5,14 @@ class Income extends Controller{
 
     function __construct()
     {
-        $db = new Database;
+        $this->db = new Database;
     }
     public function index()
     {
+        $incomes = $this->db->readAll('incomes');
         $data = [
-            'title' => "This is income page"
+            'title' => "Income",
+            'incomes' => $incomes
         ];
         $this->view('incomes/index',$data);
     }
