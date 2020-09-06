@@ -4,15 +4,13 @@ class Page extends Controller
  private $db;
  public function __construct()
  {
-  $this->userModel = $this->model('User');
   $this->db = new Database;
  }
 
  public function index()
  {
-
   $data = [
-   'title' => 'Home'
+   'title' => 'This is home page.'
   ];
   $this->view('pages/index', $data);
 
