@@ -41,7 +41,7 @@
           ?>
           </tbody>
         </table>
-       
+        <a href="<?php  echo URLROOT.'/category/create'; ?>" class="btn btn-primary float-right">Add New</a>
       </div>
 		</div>
 

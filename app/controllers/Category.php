@@ -37,7 +37,14 @@ class Category extends Controller{
         $description = $_POST['description'];
         $type_id = $_POST['type_id'];
 
-        echo $name;
+        $category = $this->model("CategoryModel");
+        $category->setName($name);
+        $category->setDescription($description);
+        $category->setTypeId($type_id);
+
+        $created = $this->db->create('categories',$category->toArray());
+
+        header('location:'.URLROOT.'/category/index');
         
         }
 
