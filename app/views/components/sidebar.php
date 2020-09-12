@@ -39,6 +39,7 @@
         <ul class="collapse list-unstyled" id="categorySubmenu">
         <li>
             <a href="<?php echo URLROOT ?>/category/index">Index</a>
+            <a href="<?php echo URLROOT ?>/category/create">Add New</a>
         </li>
         
         </ul>
