@@ -20,7 +20,8 @@
         <a href="#incomeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Income</a>
         <ul class="collapse list-unstyled" id="incomeSubmenu">
         <li>
-            <a href="<?php echo URLROOT ?>/income/index">income</a>
+            <a href="<?php echo URLROOT ?>/income/index">View All</a>
+            <a href="<?php echo URLROOT ?>/income/create">Add New</a>
         </li>
         </li>
         </ul>
