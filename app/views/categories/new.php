@@ -38,8 +38,12 @@
                     <label for="name" class="col-sm-2 col-form-label">Type</label>
                     <div class="col-sm-10">
                     <select class="custom-select" name="type_id">
-                        <option value ="1" selected>Income Category</option>
-                        <option value ="2">Expense Category</option>
+                       <?php  foreach($data['types'] as $type)  { ?>
+                       <option value="<?php echo $type['id'] ?>"> 
+                           <?php echo $type['name']  ?> 
+                        </option>
+                        
+                       <?php } ?>
                     </select>
                     </div>
                 </div>

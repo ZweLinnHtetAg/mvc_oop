@@ -21,9 +21,10 @@
         <table class="table table-light">
         <thead>
               <tr>
-                  <th>Id</th>
                   <th>Name </th>
                   <th>Description </th>
+                  <th> </th>
+                  <th> </th>
               </tr>
           </thead>
           <tbody>
@@ -32,9 +33,10 @@
           {
           ?>
           <tr>
-            <td><?php echo $category['id'] ?></td>
             <td><?php echo $category['name'] ?></td>
             <td><?php echo $category['description'] ?></td>
+            <td><a href="" class="btn btn-success">Edit</a></td>
+            <td><a href="<?php echo URLROOT.'/category/delete/'.$category['id'] ?>" class="btn btn-danger">Delete</a></td>
           </tr>
           <?php
           }

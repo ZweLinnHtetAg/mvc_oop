@@ -25,6 +25,8 @@
           <th>Amount</th>
           <th>User Id</th>
           <th>Date</th>
+          <th></th>
+          <th></th>
         </thead>
         <tbody>
         <?php
@@ -39,6 +41,8 @@
               <td><?php echo $income['amount'] ?></td>
               <td><?php echo $income['user_id'] ?></td>
               <td><?php echo $income['date'] ?></td>
+              <td><a href="" class="btn btn-success">Edit</a></td>
+              <td><a href="<?php echo URLROOT.'/income/delete/'.$income['id'] ?>" class="btn btn-danger">Delete</a></td>
             </tr>
 
             <?php
@@ -47,7 +51,7 @@
         ?>
         </tbody>
         </table>
-       
+       <a href="<?php echo URLROOT.'/income/create' ?>" class="btn btn-primary float-right">Add New</a>
       </div>
 		</div>
 

@@ -30,7 +30,8 @@
         <a href="#expenseSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Expense</a>
         <ul class="collapse list-unstyled" id="expenseSubmenu">
         <li>
-            <a href="<?php echo URLROOT; ?>/expense/index">index</a>
+            <a href="<?php echo URLROOT; ?>/expense/index">View All</a>
+            <a href="<?php echo URLROOT; ?>/expense/create">Add New</a>
         </li>
         </li>
         </ul>
@@ -39,7 +40,7 @@
         <a href="#categorySubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Category</a>
         <ul class="collapse list-unstyled" id="categorySubmenu">
         <li>
-            <a href="<?php echo URLROOT ?>/category/index">Index</a>
+            <a href="<?php echo URLROOT ?>/category/index">View All</a>
             <a href="<?php echo URLROOT ?>/category/create">Add New</a>
         </li>
         

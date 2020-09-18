@@ -19,8 +19,10 @@ class Income extends Controller{
 
     public function create()
     {
+        $categories = $this->db->readAll('categories');
         $data = [
-            'title' => "New Income"
+            'title' => "New Income",
+            'categories' => $categories
         ];
         $this->view('incomes/create',$data);
     }
@@ -50,6 +52,11 @@ class Income extends Controller{
         {
             header('location:'.URLROOT.'/income/index');
         }   
+    }
+    public function delete($id)
+    {
+        $this->db->delete('incomes',$id);
+        header('location:'.URLROOT.'/income/index');
     }
 }
 

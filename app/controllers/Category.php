@@ -22,8 +22,10 @@ class Category extends Controller{
 
     public function create()
     {
+        $types = $this->db->readAll('types');
         $data = [
-            "title" => "New Category"
+            "title" => "New Category",
+            "types" => $types
         ];
 
         $this->view('categories/new',$data);
@@ -53,6 +55,13 @@ class Category extends Controller{
             header('location:'.URLROOT.'/category/index');
         }
 
+    }
+
+    public function delete($id)
+    {
+        $this->db->delete('categories',$id);
+
+        header('location:'.URLROOT.'/category/index');
     }
 
 }
