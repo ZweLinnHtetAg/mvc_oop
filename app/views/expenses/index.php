@@ -39,7 +39,7 @@
               <td><?php echo $expense['user_id'] ?></td>
               <td><?php echo $expense['date'] ?></td>
 
-              <td><a href="" class="btn btn-success">Edit</a></td>
+              <td><a href="<?php echo URLROOT.'/expense/edit/'.$expense['id'] ?>" class="btn btn-success">Edit</a></td>
               <td><a href="<?php echo URLROOT."/expense/delete/".$expense['id'] ?> " class="btn btn-danger">Delete</a></td>
             </tr>
           <?php

@@ -58,6 +58,46 @@ class Income extends Controller{
         $this->db->delete('incomes',$id);
         header('location:'.URLROOT.'/income/index');
     }
+
+    public function edit($id)
+    {
+        $income = $this->db->getById("incomes",$id);
+        $categories = $this->db->readAll("categories");
+        $data = [
+            "title" => "Edit Income",
+            "categories" => $categories,
+            "income" => $income
+        ];
+        $this->view('incomes/edit',$data);
+    }
+
+    public function update($id)
+    {   
+        if($_SERVER['REQUEST_METHOD']=="POST")
+        {
+           $amount = $_POST['amount'];
+           $category_id = $_POST['category_id'];
+           $date = $_POST['date'];
+           $user_id = 1;
+
+           $income = $this->model("IncomeModel");
+
+           $income->setId($id);
+           $income->setCategory($category_id);
+           $income->setAmount($amount);
+           $income->setUser($user_id);
+           $income->setDate($date);
+
+           $this->db->update("incomes",$id,$income->toArray());
+
+           header('location:'.URLROOT.'/income/index');
+
+        }
+        else {
+            header('location:'.URLROOT.'/income/index');
+        }
+        
+    }
 }
 
 
