@@ -28,7 +28,7 @@ class Category extends Controller{
             "types" => $types
         ];
 
-        $this->view('categories/new',$data);
+        $this->view('categories/create',$data);
     }
 
     public function store()
@@ -45,7 +45,9 @@ class Category extends Controller{
         $category->setTypeId($type_id);
 
         $created = $this->db->create('categories',$category->toArray());
-
+        
+        setMessage("New Category is added !");
+        
         header('location:'.URLROOT.'/category/index');
         
         }
@@ -60,6 +62,8 @@ class Category extends Controller{
     public function delete($id)
     {
         $this->db->delete('categories',$id);
+
+        setMessage("Category is deleted !");
 
         header('location:'.URLROOT.'/category/index');
     }
@@ -91,6 +95,9 @@ class Category extends Controller{
             $category->setTypeId($type_id);
 
             $this->db->update("categories",$id,$category->toArray());
+
+            setMessage("Category is updated !");
+
             header('location:'.URLROOT.'/category/index');
 
         }

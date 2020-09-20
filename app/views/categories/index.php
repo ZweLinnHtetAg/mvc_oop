@@ -15,9 +15,8 @@
 
             echo $data['title'];
         ?>
-
         </h2>
-
+        <?php require_once APPROOT.'/views/components/message.php'; ?>
         <table class="table table-light">
         <thead>
               <tr>

@@ -44,7 +44,7 @@ class Income extends Controller{
             $income->setDate($date);
 
             $created = $this->db->create('incomes',$income->toArray());
-
+            setMessage("New Income Data is added !");
             header('location:'.URLROOT.'/income/index');
 
         }
@@ -56,6 +56,7 @@ class Income extends Controller{
     public function delete($id)
     {
         $this->db->delete('incomes',$id);
+        setMessage("Income Data is deleted !");
         header('location:'.URLROOT.'/income/index');
     }
 
@@ -89,7 +90,7 @@ class Income extends Controller{
            $income->setDate($date);
 
            $this->db->update("incomes",$id,$income->toArray());
-
+           setMessage("Income Data is updated !");
            header('location:'.URLROOT.'/income/index');
 
         }

@@ -47,7 +47,7 @@ class Expense extends Controller{
             $expense->setDate($date);
 
             $this->db->create('expenses',$expense->toArray());
-
+            setMessage("New expense data is added !");
             header("location:".URLROOT.'/expense/index');
         }
         else{
@@ -58,6 +58,7 @@ class Expense extends Controller{
     public function delete($id)
     {
         $this->db->delete('expenses',$id);
+        setMessage("Expense data is deleted !");
         header("location:".URLROOT.'/expense/index');
     }
 
@@ -94,7 +95,7 @@ class Expense extends Controller{
             $expense->setCategory($category_id);
 
             $this->db->update("expenses",$id,$expense->toArray());
-
+            setMessage("Expense data is updated !");
             header("location:".URLROOT."/expense/index");
         }
         else{
