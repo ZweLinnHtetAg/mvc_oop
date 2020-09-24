@@ -11,7 +11,7 @@ class Category extends Controller{
 
     public function index(){
 
-        $categories = $this->db->readAll('categories');        
+        $categories = $this->db->categoryView();        
         $data = [
             'title' => 'Category',
             'categories' => $categories
@@ -48,7 +48,7 @@ class Category extends Controller{
         
         setMessage("New Category is added !");
         
-        header('location:'.URLROOT.'/category/index');
+        header('location:'.URLROOT.'/category/index'); 
         
         }
 

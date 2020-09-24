@@ -1,5 +1,5 @@
 <?php
-class User
+class UserModel
 {
  private $id;
  private $name; // set, get
@@ -12,20 +12,14 @@ class User
  private $date;
  private $token;
 
- public function __construct($user_data = [])
+ public function setId($id)
  {
-  if (isset($user_data['name'])) {
-   $this->name          = @$user_data['name'];
-   $this->email         = @$user_data['email'];
-   $this->password      = @$user_data['password'];
-   $this->token         = @$user_data['token'];
-   $this->profile_image = @$user_data['profile_image'];
-   $this->is_confirmed  = @$user_data['is_confirmed'];
-   $this->is_active     = @$user_data['is_active'];
-   $this->is_login      = @$user_data['is_login'];
-   $this->date          = @$user_data['date'];
-  }
+     $this->id = $id;
+ }
 
+ public function getId()
+ {
+     return $this->id;
  }
 
  public function setName($name)
@@ -121,6 +115,7 @@ class User
  public function toArray()
  {
   return [
+   "id"            => $this->getId(),
    "name"          => $this->getName(),
    "email"         => $this->getEmail(),
    "password"      => $this->getPassword(),
@@ -129,48 +124,9 @@ class User
    "is_active"     => $this->getIsActive(),
    "is_login"      => $this->getIsLogin(),
    "is_confirmed"  => $this->getIsConfirmed(),
-   "date"          => $this->getDate(),
+   "created_date"  => $this->getDate(),
   ];
  }
 
- // Using Magic Method
-
- // __set Magic Method
- public function __set($property, $value)
- {
-  if (property_exists($this, $property)) {
-   $this->$property = $value;
-  }
-  return $this;
- }
-
- // __Get MAGIC Method
-
- public function __get($property)
- {
-  if (property_exists($this, $property)) {
-   return $this->$property;
-  }
- }
-
- public function toArrayMagic()
- {
-  return [
-   "name"          => $this->__get('name'),
-   "email"         => $this->__get('email'),
-   "password"      => $this->__get('password'),
-   "token"         => $this->__get('token'),
-   "profile_image" => $this->__get('profile_image'),
-   "is_active"     => $this->__get('is_active'),
-   "is_login"      => $this->__get('is_login'),
-   "is_confirmed"  => $this->__get('is_confirmed'),
-   "date"          => $this->__get('date'),
-  ];
- }
-
- public function getUserName()
- {
-
- }
 
 }

@@ -20,9 +20,9 @@
         <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT ?>/category/index">Category</a>
         </li>
-        <!-- <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-        </li> -->
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo URLROOT ?>">Log Out</a>
+        </li>
         </ul>
     </div>
     </div>

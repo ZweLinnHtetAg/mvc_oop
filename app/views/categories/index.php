@@ -35,7 +35,7 @@
           <tr>
             <td><?php echo $category['name'] ?></td>
             <td><?php echo $category['description'] ?></td>
-            <td><?php echo $category['type_id'] ?></td>
+            <td><?php echo $category['type'] ?></td>
             <td><a href="<?php echo URLROOT.'/category/edit/'.$category['id'] ?>" class="btn btn-success">Edit</a></td>
             <td><a href="<?php echo URLROOT.'/category/delete/'.$category['id'] ?>" class="btn btn-danger">Delete</a></td>
           </tr>

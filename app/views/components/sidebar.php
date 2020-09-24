@@ -46,6 +46,9 @@
         
         </ul>
         </li>
+        <li>
+            <a href="<?php echo URLROOT ;?>/page/index">Log Out</a>
+        </li>
         <!-- <li>
             <a href="#">About</a>
         </li>

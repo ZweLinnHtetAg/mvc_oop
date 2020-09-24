@@ -49,6 +49,7 @@ class Database
   $row     = $stm->fetch(PDO::FETCH_ASSOC);
   return ($success) ? $row : [];
  }
+
  public function readAll($table)
  {
   $stm     = $this->pdo->prepare('SELECT * FROM ' . $table);
@@ -123,6 +124,71 @@ class Database
   } else {
    return $this->create($table, $data);
   }
+ }
+
+ public function categoryView()
+ {
+     try{
+        $sql= "SELECT categories.id , categories.name , categories.description , types.name As type
+              FROM categories 
+              LEFT JOIN types 
+              ON categories.type_id = types.id";
+        $stm = $this->pdo->prepare($sql);
+        $success = $stm->execute();
+        $row = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
+     }
+     catch(Exception $e)
+     {
+         echo $e;
+     }
+ }
+
+ public function incomeView()
+ {
+    try{
+        $sql= "";
+        $stm = $this->pdo->prepare($sql);
+        $success = $stm->execute();
+        $row = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
+     }
+     catch(Exception $e)
+     {
+         echo $e;
+     }
+ }
+
+ public function expenseView()
+ {
+    try{
+        $sql= "";
+        $stm = $this->pdo->prepare($sql);
+        $success = $stm->execute();
+        $row = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
+     }
+     catch(Exception $e)
+     {
+         echo $e;
+     }
+ }
+
+ public function loginCheck($email,$password)
+ {
+    try{
+        $sql= "SELECT * FROM users WHERE `email` =:email AND `password` =:password";
+        $stm = $this->pdo->prepare($sql);
+        $stm->bindValue(':email',$email);
+        $stm->bindValue(':password',$password);
+        $success = $stm->execute();
+        $row = $stm->fetchAll(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
+     }
+     catch(Exception $e)
+     {
+         echo $e;
+     }
  }
 
 }

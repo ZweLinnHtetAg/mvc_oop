@@ -9,12 +9,15 @@ class Page extends Controller
 
  public function index()
  {
-  $data = [
-   'title' => 'This is home page.'
-  ];
-  $this->view('pages/index', $data);
+  
+   $this->view('pages/login');
+   
+}
 
- }
+public function register()
+{
+   $this->view('pages/register');
+}
 
  public function create($id)
  {
