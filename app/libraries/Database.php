@@ -49,7 +49,6 @@ class Database
   $row     = $stm->fetch(PDO::FETCH_ASSOC);
   return ($success) ? $row : [];
  }
-
  public function readAll($table)
  {
   $stm     = $this->pdo->prepare('SELECT * FROM ' . $table);
@@ -126,69 +125,158 @@ class Database
   }
  }
 
- public function categoryView()
+ public function columnFilter($table,$column,$value)
+ {
+
+  $stm = $this->pdo->prepare('SELECT * FROM ' . $table . ' WHERE `' . str_replace('`', '', $column) . '` = :value');
+  $stm->bindValue(':value', $value);
+  $success = $stm->execute();
+  $row     = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+  return ($success) ? $row : [];
+  
+ }
+
+ public function verify($id)
+ {
+    try{
+        
+        $sql        = "UPDATE users SET `is_confirmed` =:true ,`is_active` ='1' WHERE `id` = $id";
+        $stm        = $this->pdo->prepare($sql);
+        $stm->bindValue(':true','1');
+        $success = $stm->execute();
+        $row     = $stm->fetch(PDO::FETCH_ASSOC);
+        print_r($row);
+        return ($success) ? $success : '0';
+        
+     }
+     catch( Exception $e)
+     {
+         echo($e);
+     }
+ }
+
+ public function loginCheck($email,$password)
  {
      try{
-        $sql= "SELECT categories.id , categories.name , categories.description , types.name As type
-              FROM categories 
-              LEFT JOIN types 
-              ON categories.type_id = types.id";
-        $stm = $this->pdo->prepare($sql);
+        
+        $sql        = "SELECT * FROM users WHERE `email` =:email AND `password` =:password AND `is_confirmed` = '1'";
+        $stm        = $this->pdo->prepare($sql);
+        $stm->bindValue(':email',$email);
+        $stm->bindValue(':password',$password);
         $success = $stm->execute();
-        $row = $stm->fetchAll(PDO::FETCH_ASSOC);
+        $row     = $stm->fetch(PDO::FETCH_ASSOC);
         return ($success) ? $row : [];
+        
      }
-     catch(Exception $e)
+     catch( Exception $e)
      {
-         echo $e;
+         echo($e);
+     }
+ }
+
+ public function setLogin($id)
+ {
+    try{
+        
+        $sql        = "UPDATE users SET is_login = :true WHERE `id` = :id";
+        $stm        = $this->pdo->prepare($sql);
+        $stm->bindValue(':true','1');
+        $stm->bindValue(':id',$id);
+        $success = $stm->execute();
+        $row     = $stm->fetch(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
+        
+     }
+     catch( Exception $e)
+     {
+         echo($e);
+     }
+ }
+
+ public function unsetLogin($id)
+ {
+    try{
+        
+        $sql        = "UPDATE users SET is_login = :false WHERE `id` = :id";
+        $stm        = $this->pdo->prepare($sql);
+        $stm->bindValue(':false','0');
+        $stm->bindValue(':id',$id);
+        $success = $stm->execute();
+        $row     = $stm->fetch(PDO::FETCH_ASSOC);
+        return ($success) ? $row : [];
+        
+     }
+     catch( Exception $e)
+     {
+         echo($e);
      }
  }
 
  public function incomeView()
  {
     try{
-        $sql= "";
+
+        $sql        = "SELECT incomes.id,incomes.user_id,incomes.amount,incomes.date,categories.name AS category_name,incomes.category_id,users.name AS user_name
+        FROM incomes
+        LEFT JOIN categories ON incomes.category_id = categories.id 
+        LEFT JOIN users ON incomes.user_id = users.id";
+
         $stm = $this->pdo->prepare($sql);
         $success = $stm->execute();
-        $row = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+        $row     = $stm->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $row : [];
+        
      }
-     catch(Exception $e)
+     catch( Exception $e)
      {
-         echo $e;
+         echo($e);
      }
  }
 
  public function expenseView()
  {
     try{
-        $sql= "";
+
+        $sql        = "SELECT expenses.id,expenses.user_id,expenses.qty,expenses.amount,expenses.date,categories.name AS category_name,expenses.category_id,users.name AS user_name
+        FROM expenses
+        LEFT JOIN categories ON expenses.category_id = categories.id 
+        LEFT JOIN users ON expenses.user_id = users.id";
+
         $stm = $this->pdo->prepare($sql);
         $success = $stm->execute();
-        $row = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+        $row     = $stm->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $row : [];
+        
      }
-     catch(Exception $e)
+     catch( Exception $e)
      {
-         echo $e;
+         echo($e);
      }
  }
 
- public function loginCheck($email,$password)
+ public function categoryView()
  {
     try{
-        $sql= "SELECT * FROM users WHERE `email` =:email AND `password` =:password";
+
+        $sql        = "SELECT categories.id,categories.name,categories.description,types.name AS type_name
+        FROM categories
+        LEFT JOIN types ON categories.type_id = types.id";
+
         $stm = $this->pdo->prepare($sql);
-        $stm->bindValue(':email',$email);
-        $stm->bindValue(':password',$password);
         $success = $stm->execute();
-        $row = $stm->fetchAll(PDO::FETCH_ASSOC);
+
+        $row     = $stm->fetchAll(PDO::FETCH_ASSOC);
         return ($success) ? $row : [];
+        
      }
-     catch(Exception $e)
+     catch( Exception $e)
      {
-         echo $e;
+         echo($e);
      }
  }
+
 
 }

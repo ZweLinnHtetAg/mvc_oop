@@ -6,5 +6,9 @@ function setMessage($message)
     $_SESSION['message'] = $message;
 }
 
+function unsetMessage($message)
+{
+    unset($_SESSION[$name]);
+}
 
 ?>
