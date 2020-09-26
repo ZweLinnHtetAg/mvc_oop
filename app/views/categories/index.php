@@ -7,17 +7,13 @@
       <div id="content" class="p-4 p-md-5">
 
       <?php require_once APPROOT.'/views/components/menu.php';  ?>
-        
-
         <h2 class="mb-4">
-
         <?php
-
             echo $data['title'];
         ?>
         </h2>
         <?php require_once APPROOT.'/views/components/message.php'; ?>
-        <table class="table table-light">
+        <table class="table table-light" id="myTable">
         <thead>
               <tr>
                   <th>Name </th>
@@ -35,7 +31,7 @@
           <tr>
             <td><?php echo $category['name'] ?></td>
             <td><?php echo $category['description'] ?></td>
-            <td><?php echo $category['type'] ?></td>
+            <td><?php echo $category['type_name'] ?></td>
             <td><a href="<?php echo URLROOT.'/category/edit/'.$category['id'] ?>" class="btn btn-success">Edit</a></td>
             <td><a href="<?php echo URLROOT.'/category/delete/'.$category['id'] ?>" class="btn btn-danger">Delete</a></td>
           </tr>
@@ -44,7 +40,7 @@
           ?>
           </tbody>
         </table>
-        <a href="<?php  echo URLROOT.'/category/create'; ?>" class="btn btn-primary float-right">Add New</a>
+        <a href="<?php  echo URLROOT.'/category/create'; ?>" class="btn btn-primary float-right mt-5">Add New</a>
       </div>
 		</div>
 

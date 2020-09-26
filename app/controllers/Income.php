@@ -9,7 +9,7 @@ class Income extends Controller{
     }
     public function index()
     {
-        $incomes = $this->db->readAll('incomes');
+        $incomes = $this->db->incomeView();
         $data = [
             'title' => "Income",
             'incomes' => $incomes

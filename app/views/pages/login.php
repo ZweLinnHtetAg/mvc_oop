@@ -1,3 +1,11 @@
+<?php
+
+if(session_id()=='') // no session
+{
+    session_start();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +42,12 @@
 					<span class="login100-form-title">
 						Member Login
 					</span>
-
+					
+					<?php if(isset($_SESSION['message'])) { ?>
+					<p class="text-success ml-3 mb-3">
+						<?php  echo $_SESSION['message']; unsetMessage('message') ?>
+					</p>
+					<?php } ?>
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<input class="input100" type="text" name="email" placeholder="Email">
 						<span class="focus-input100"></span>

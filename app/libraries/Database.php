@@ -127,20 +127,16 @@ class Database
 
  public function columnFilter($table,$column,$value)
  {
-
   $stm = $this->pdo->prepare('SELECT * FROM ' . $table . ' WHERE `' . str_replace('`', '', $column) . '` = :value');
   $stm->bindValue(':value', $value);
   $success = $stm->execute();
   $row     = $stm->fetchAll(PDO::FETCH_ASSOC);
-
   return ($success) ? $row : [];
-  
  }
 
  public function verify($id)
  {
-    try{
-        
+    try{  
         $sql        = "UPDATE users SET `is_confirmed` =:true ,`is_active` ='1' WHERE `id` = $id";
         $stm        = $this->pdo->prepare($sql);
         $stm->bindValue(':true','1');
@@ -148,7 +144,6 @@ class Database
         $row     = $stm->fetch(PDO::FETCH_ASSOC);
         print_r($row);
         return ($success) ? $success : '0';
-        
      }
      catch( Exception $e)
      {
@@ -160,10 +155,11 @@ class Database
  {
      try{
         
-        $sql        = "SELECT * FROM users WHERE `email` =:email AND `password` =:password AND `is_confirmed` = '1'";
+        $sql        = "SELECT * FROM users WHERE `email` =:email AND `password` =:password AND `is_confirmed` = :true";
         $stm        = $this->pdo->prepare($sql);
         $stm->bindValue(':email',$email);
         $stm->bindValue(':password',$password);
+        $stm->bindValue(':true','1');
         $success = $stm->execute();
         $row     = $stm->fetch(PDO::FETCH_ASSOC);
         return ($success) ? $row : [];
@@ -186,7 +182,6 @@ class Database
         $success = $stm->execute();
         $row     = $stm->fetch(PDO::FETCH_ASSOC);
         return ($success) ? $row : [];
-        
      }
      catch( Exception $e)
      {
@@ -196,8 +191,7 @@ class Database
 
  public function unsetLogin($id)
  {
-    try{
-        
+    try{ 
         $sql        = "UPDATE users SET is_login = :false WHERE `id` = :id";
         $stm        = $this->pdo->prepare($sql);
         $stm->bindValue(':false','0');

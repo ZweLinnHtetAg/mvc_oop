@@ -20,7 +20,6 @@
         <?php require_once APPROOT.'/views/components/message.php'; ?>
         <table class="table table-light">
         <thead>
-          <th>ID</th>
           <th>Category ID</th>
           <th>Amount</th>
           <th>User Id</th>
@@ -36,10 +35,9 @@
             ?>
 
             <tr>
-              <td><?php echo $income['id'] ?></td>
-              <td><?php echo $income['category_id'] ?></td>
+              <td><?php echo $income['category_name'] ?></td>
               <td><?php echo $income['amount'] ?></td>
-              <td><?php echo $income['user_id'] ?></td>
+              <td><?php echo $income['user_name'] ?></td>
               <td><?php echo $income['date'] ?></td>
               <td><a href="<?php echo URLROOT.'/income/edit/'.$income['id'] ?>" class="btn btn-success">Edit</a></td>
               <td><a href="<?php echo URLROOT.'/income/delete/'.$income['id'] ?>" class="btn btn-danger">Delete</a></td>

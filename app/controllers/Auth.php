@@ -16,16 +16,14 @@ class Auth extends Controller {
         {
             $email = $_POST['email'];
             $password = base64_encode($_POST['password']);
-
             $user = $this->db->loginCheck($email,$password);
-
             if($user)
             {
                 header("location:".URLROOT."/category/index");
             }
 
             else {
-                header("location:".URLROOT."/page/index");
+               header("location:".URLROOT."/page/index");
             }
 
         }
@@ -61,11 +59,20 @@ class Auth extends Controller {
                 $user->setIsActive(0);
                 $user->setIsLogin(0);
                 $user->setDate(date("Y-m-d"));
-                $this->db->create("users",$user->toArray());
+                $success = $this->db->create("users",$user->toArray());
+                
+                $token = URLROOT.'/auth/verify/'.$token;
+                if($success)
+                {
+                    $mail = new Mail();
+                    $mail->verifyMail($email,$name,$token);
+                    setMessage("Please Check your mail inbox !");
+                }
+
+
             }
 
-            
-
+        
             header("location:".URLROOT.'/page/index');
 
         }
@@ -73,6 +80,17 @@ class Auth extends Controller {
         {
             header("location:".URLROOT.'/page/register');
         }
+    }
+
+    function verify($token)
+    {
+        $user = $this->db->columnFilter('users','token',$token);
+        $id =  $user[0]['id'];
+        $this->db->verify($id);
+        setMessage("Verification Success !");
+        header("location:".URLROOT.'/page/index');
+        
+
     }
 }
 

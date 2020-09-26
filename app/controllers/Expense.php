@@ -10,7 +10,7 @@ class Expense extends Controller{
 
     public function index()
     {
-        $expenses = $this->db->readAll('expenses');
+        $expenses = $this->db->expenseView();
         $data = [
             "title" => "Expense",
             "expenses"=> $expenses
