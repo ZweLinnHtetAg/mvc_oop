@@ -46,26 +46,20 @@ class Category extends Controller{
 
         $created = $this->db->create('categories',$category->toArray());
         
-        setMessage("New Category is added !");
-        
-        header('location:'.URLROOT.'/category/index'); 
-        
+        setMessage("New Category is added !"); 
+        redirect('/category/index');
         }
-
         else 
         {
-            header('location:'.URLROOT.'/category/index');
+            redirect('/category/index');
         }
-
     }
 
     public function delete($id)
     {
         $this->db->delete('categories',$id);
-
         setMessage("Category is deleted !");
-
-        header('location:'.URLROOT.'/category/index');
+        redirect('/category/index');
     }
 
     public function edit($id)
@@ -87,24 +81,19 @@ class Category extends Controller{
             $name = $_POST['name'];
             $description = $_POST['description'];
             $type_id = $_POST['type_id'];
-
             $category = $this->model("CategoryModel");
             $category->setId($id);
             $category->setName($name);
             $category->setDescription($description);
             $category->setTypeId($type_id);
-
             $this->db->update("categories",$id,$category->toArray());
-
             setMessage("Category is updated !");
-
-            header('location:'.URLROOT.'/category/index');
-
+            redirect("/category/index");
         }
 
         else 
         {
-            header('location:'.URLROOT.'/category/index');
+            redirect('/category/index');
         }
     }
 

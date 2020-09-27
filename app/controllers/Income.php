@@ -45,19 +45,19 @@ class Income extends Controller{
 
             $created = $this->db->create('incomes',$income->toArray());
             setMessage("New Income Data is added !");
-            header('location:'.URLROOT.'/income/index');
+            redirect('/income/index');
 
         }
         else 
         {
-            header('location:'.URLROOT.'/income/index');
+            redirect("/income/index");
         }   
     }
     public function delete($id)
     {
         $this->db->delete('incomes',$id);
         setMessage("Income Data is deleted !");
-        header('location:'.URLROOT.'/income/index');
+        redirect("/income/index");
     }
 
     public function edit($id)
@@ -91,11 +91,11 @@ class Income extends Controller{
 
            $this->db->update("incomes",$id,$income->toArray());
            setMessage("Income Data is updated !");
-           header('location:'.URLROOT.'/income/index');
+           redirect("/income/index");
 
         }
         else {
-            header('location:'.URLROOT.'/income/index');
+            redirect("/income/index");
         }
         
     }

@@ -9,29 +9,30 @@ class Page extends Controller
 
  public function index()
  {
-  
-   $this->view('pages/login');
-   
-}
+   redirect("page/login");
+ }
 
 public function register()
 {
    $this->view('pages/register');
 }
 
- public function create($id)
+ public function login()
  {
-  echo $id;
+   $this->view('pages/login'); 
  }
 
- public function about()
+ public function dashboard()
  {
-  $data = [
-   'title' => 'About',
-  ];
+   $income = $this->db->incomeTransition();
+   $expense = $this->db->expenseTransition();
 
-  $this->view('pages/about', $data);
-
+   $data = [
+    'income' => $income,
+    'expense' => $expense
+   ];
+   $this->view('pages/dashboard',$data);
  }
+
  
 }

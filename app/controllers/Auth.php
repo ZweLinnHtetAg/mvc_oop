@@ -1,14 +1,13 @@
 <?php
 
-
 class Auth extends Controller {
+
     private $db;
 
     function __construct()
     {
         $this->db = new Database;
     }
-
 
     function login()
     {
@@ -19,16 +18,23 @@ class Auth extends Controller {
             $user = $this->db->loginCheck($email,$password);
             if($user)
             {
-                header("location:".URLROOT."/category/index");
+                // change is_login to 1 
+                $this->db->setLogin($user['id']);
+                set('auth_id',$user['id']);
+                redirect("/category/index");
             }
-
             else {
-               header("location:".URLROOT."/page/index");
+                redirect("/page/index");
             }
-
         }
+        else redirect('/page/index');
+    }
 
-        else header("location:".URLROOT.'/page/index');
+    function logout($id)
+    {
+        $this->db->unsetLogin($id);
+
+        redirect("/page/login");
     }
 
     function register()
@@ -68,17 +74,12 @@ class Auth extends Controller {
                     $mail->verifyMail($email,$name,$token);
                     setMessage("Please Check your mail inbox !");
                 }
-
-
             }
-
-        
-            header("location:".URLROOT.'/page/index');
-
+            redirect('/page/index');
         }
         else 
         {
-            header("location:".URLROOT.'/page/register');
+            redirect("/page/register");
         }
     }
 
@@ -88,9 +89,7 @@ class Auth extends Controller {
         $id =  $user[0]['id'];
         $this->db->verify($id);
         setMessage("Verification Success !");
-        header("location:".URLROOT.'/page/index');
-        
-
+        redirect('/page/index');
     }
 }
 

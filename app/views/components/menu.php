@@ -21,7 +21,7 @@
             <a class="nav-link" href="<?php echo URLROOT ?>/category/index">Category</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT ?>">Log Out</a>
+            <a class="nav-link" href="<?php echo URLROOT ;?>/auth/logout/<?php echo $_SESSION['auth_id'] ?>">Log Out</a>
         </li>
         </ul>
     </div>

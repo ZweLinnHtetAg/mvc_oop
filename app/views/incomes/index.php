@@ -18,7 +18,7 @@
 
         </h2>
         <?php require_once APPROOT.'/views/components/message.php'; ?>
-        <table class="table table-light">
+        <table class="table table-light" id="myTable">
         <thead>
           <th>Category ID</th>
           <th>Amount</th>

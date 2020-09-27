@@ -2,20 +2,9 @@
         <div class="p-4 pt-5">
         <a href="#" class="img logo rounded-circle mb-5" style="background-image: url('<?php echo URLROOT; ?>/public/images/logo.jpg');"></a>
     <ul class="list-unstyled components mb-5">
-        <!-- <li class="active">
-        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home</a>
-        <ul class="collapse list-unstyled" id="homeSubmenu">
         <li>
-            <a href="#">Home 1</a>
+            <a href="<?php echo URLROOT."/page/dashboard" ?>">Dashboard</a>
         </li>
-        <li>
-            <a href="#">Home 2</a>
-        </li>
-        <li>
-            <a href="#">Home 3</a>
-        </li>
-        </ul>
-        </li> -->
         <li>
         <a href="#incomeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Income</a>
         <ul class="collapse list-unstyled" id="incomeSubmenu">
@@ -47,7 +36,7 @@
         </ul>
         </li>
         <li>
-            <a href="<?php echo URLROOT ;?>/page/index">Log Out</a>
+            <a href="<?php echo URLROOT ;?>/auth/logout/<?php echo $_SESSION['auth_id'] ?>">Log Out</a>
         </li>
         <!-- <li>
             <a href="#">About</a>

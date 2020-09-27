@@ -48,10 +48,11 @@ class Expense extends Controller{
 
             $this->db->create('expenses',$expense->toArray());
             setMessage("New expense data is added !");
-            header("location:".URLROOT.'/expense/index');
+            
+            redirect('/expense/index');
         }
         else{
-            header("location:".URLROOT.'/expense/index');
+            redirect("/expense/index");
         }
     }
 
@@ -59,7 +60,7 @@ class Expense extends Controller{
     {
         $this->db->delete('expenses',$id);
         setMessage("Expense data is deleted !");
-        header("location:".URLROOT.'/expense/index');
+        redirect('/expense/index');
     }
 
     public function edit($id)
@@ -96,10 +97,11 @@ class Expense extends Controller{
 
             $this->db->update("expenses",$id,$expense->toArray());
             setMessage("Expense data is updated !");
-            header("location:".URLROOT."/expense/index");
+            
+            redirect("/expense/index");
         }
         else{
-            header("location:".URLROOT."/expense/index");
+            redirect("/expense/index");
         }
     }
 }
