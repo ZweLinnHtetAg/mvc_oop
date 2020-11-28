@@ -33,7 +33,6 @@ class Auth extends Controller {
     function logout($id)
     {
         $this->db->unsetLogin($id);
-
         redirect("/page/login");
     }
 
@@ -41,7 +40,6 @@ class Auth extends Controller {
     {
         if($_SERVER['REQUEST_METHOD']=='POST')
         {
-
             $validation = new UserValidator($_POST);
             $data = $validation->validateForm();
 
@@ -49,7 +47,6 @@ class Auth extends Controller {
             {
                 $this->view('pages/register',$data);
             }
-
             else{
                 $name = $_POST['name'];
                 $email = $_POST['email'];
